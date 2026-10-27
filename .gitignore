@@ -1,0 +1,24 @@
+# Build output
+bin/
+obj/
+Content/bin/
+Content/obj/
+TestResults/
+
+# IDE / editor
+.vs/
+.idea/
+*.user
+*.suo
+*.userprefs
+
+# MonoGame content pipeline artifacts
+*.mgcontent
+*.mgstats
+
+# OS noise
+.DS_Store
+
+# Local screenshots and captures
+*.png.tmp
+screenshots/

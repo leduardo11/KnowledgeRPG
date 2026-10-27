@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "id": "forest_level1",
+  "title": "Forest — Level 1",
+  "description": "Verb to be and simple present.",
+  "language": "en",
+  "level": 1,
+  "topics": [
+    {
+      "id": "verb_to_be",
+      "label": "Verb to be (am / is / are)"
+    },
+    {
+      "id": "simple_present",
+      "label": "Simple present"
+    }
+  ],
+  "questions": [
+    {
+      "id": "be_001",
+      "topic": "verb_to_be",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "I ___ a student.",
+      "choices": ["am", "is", "are", "be"],
+      "answer": "am",
+      "explanation": "Use \"am\" with I."
+    },
+    {
+      "id": "be_002",
+      "topic": "verb_to_be",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "She ___ a teacher.",
+      "choices": ["am", "is", "are", "be"],
+      "answer": "is",
+      "explanation": "Use \"is\" with he, she, and it."
+    },
+    {
+      "id": "be_003",
+      "topic": "verb_to_be",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "They ___ at school.",
+      "choices": ["am", "is", "are", "be"],
+      "answer": "are",
+      "explanation": "Use \"are\" with we, you, and they."
+    },
+    {
+      "id": "be_004",
+      "topic": "verb_to_be",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "He ___ my brother.",
+      "choices": ["am", "is", "are", "be"],
+      "answer": "is",
+      "explanation": "Use \"is\" with he, she, and it."
+    },
+    {
+      "id": "be_005",
+      "topic": "verb_to_be",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "We ___ ready.",
+      "choices": ["am", "is", "are", "be"],
+      "answer": "are",
+      "explanation": "Use \"are\" with we, you, and they."
+    },
+    {
+      "id": "be_006",
+      "topic": "verb_to_be",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "You ___ very kind.",
+      "choices": ["am", "is", "are", "be"],
+      "answer": "are",
+      "explanation": "Use \"are\" with we, you, and they."
+    },
+    {
+      "id": "be_007",
+      "topic": "verb_to_be",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "It ___ cold today.",
+      "choices": ["am", "is", "are", "be"],
+      "answer": "is",
+      "explanation": "Use \"is\" with he, she, and it."
+    },
+    {
+      "id": "be_008",
+      "topic": "verb_to_be",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "My friends ___ happy.",
+      "choices": ["am", "is", "are", "be"],
+      "answer": "are",
+      "explanation": "Use \"are\" with plural nouns like \"friends\"."
+    },
+    {
+      "id": "sp_001",
+      "topic": "simple_present",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "He ___ (go) to school every day.",
+      "choices": ["go", "goes", "going", "went"],
+      "answer": "goes",
+      "explanation": "Third person singular takes -es after -o: go → goes."
+    },
+    {
+      "id": "sp_002",
+      "topic": "simple_present",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "They ___ (play) soccer on Sundays.",
+      "choices": ["play", "plays", "playing", "played"],
+      "answer": "play",
+      "explanation": "With they, use the base verb: play."
+    },
+    {
+      "id": "sp_003",
+      "topic": "simple_present",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "She ___ (study) English.",
+      "choices": ["study", "studies", "studying", "studied"],
+      "answer": "studies",
+      "explanation": "Change y to i and add -es after a consonant: study → studies."
+    },
+    {
+      "id": "sp_004",
+      "topic": "simple_present",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "I ___ (drink) coffee every morning.",
+      "choices": ["drink", "drinks", "drinking", "drank"],
+      "answer": "drink",
+      "explanation": "With I, use the base verb: drink."
+    },
+    {
+      "id": "sp_005",
+      "topic": "simple_present",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "The cat ___ (like) milk.",
+      "choices": ["like", "likes", "liking", "liked"],
+      "answer": "likes",
+      "explanation": "Third person singular takes -s: like → likes."
+    },
+    {
+      "id": "sp_006",
+      "topic": "simple_present",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "We ___ (watch) TV at night.",
+      "choices": ["watch", "watches", "watching", "watched"],
+      "answer": "watch",
+      "explanation": "With we, use the base verb: watch."
+    },
+    {
+      "id": "sp_007",
+      "topic": "simple_present",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "My brother ___ (do) his homework.",
+      "choices": ["do", "does", "doing", "did"],
+      "answer": "does",
+      "explanation": "Third person singular of \"do\" is \"does\"."
+    },
+    {
+      "id": "sp_008",
+      "topic": "simple_present",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "You ___ (live) in the city.",
+      "choices": ["live", "lives", "living", "lived"],
+      "answer": "live",
+      "explanation": "With you, use the base verb: live."
+    },
+    {
+      "id": "be_009",
+      "topic": "verb_to_be",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "The weather ___ nice today.",
+      "choices": ["am", "is", "are", "be"],
+      "answer": "is",
+      "explanation": "The singular noun \"weather\" takes \"is\"."
+    },
+    {
+      "id": "be_010",
+      "topic": "verb_to_be",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "My sister and I ___ at home.",
+      "choices": ["am", "is", "are", "be"],
+      "answer": "are",
+      "explanation": "\"My sister and I\" means we, so use \"are\"."
+    },
+    {
+      "id": "be_011",
+      "topic": "verb_to_be",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "This book ___ interesting.",
+      "choices": ["am", "is", "are", "be"],
+      "answer": "is",
+      "explanation": "\"This book\" is singular, so use \"is\"."
+    },
+    {
+      "id": "be_012",
+      "topic": "verb_to_be",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "Those shoes ___ new.",
+      "choices": ["am", "is", "are", "be"],
+      "answer": "are",
+      "explanation": "\"Those shoes\" is plural, so use \"are\"."
+    },
+    {
+      "id": "sp_009",
+      "topic": "simple_present",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "My brother ___ (watch) TV every evening.",
+      "choices": ["watch", "watches", "watching", "watched"],
+      "answer": "watches",
+      "explanation": "Third person singular takes -es after ch: watch → watches."
+    },
+    {
+      "id": "sp_010",
+      "topic": "simple_present",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "You ___ (need) a pencil.",
+      "choices": ["need", "needs", "needing", "needed"],
+      "answer": "need",
+      "explanation": "With you, use the base verb: need."
+    },
+    {
+      "id": "sp_011",
+      "topic": "simple_present",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "The bus ___ (leave) at eight.",
+      "choices": ["leave", "leaves", "leaving", "left"],
+      "answer": "leaves",
+      "explanation": "Third person singular takes -s: leave → leaves."
+    },
+    {
+      "id": "sp_012",
+      "topic": "simple_present",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "prompt": "We ___ (go) to the park on Saturdays.",
+      "choices": ["go", "goes", "going", "went"],
+      "answer": "go",
+      "explanation": "With we, use the base verb: go."
+    }
+  ]
+}
