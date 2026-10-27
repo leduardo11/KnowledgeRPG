@@ -9,6 +9,7 @@ internal static class TestPaths
     public static string RepositoryRoot { get; } = FindRepositoryRoot();
 
     public static string DataDirectory => Path.Combine(RepositoryRoot, "Data");
+    public static string ContentDirectory => Path.Combine(RepositoryRoot, "Content");
 
     private static string FindRepositoryRoot()
     {

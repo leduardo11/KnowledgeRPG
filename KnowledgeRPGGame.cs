@@ -182,8 +182,7 @@ namespace KnowledgeRPG
                 samplerState: SamplerState.PointClamp,
                 transformMatrix: world);
 
-            _map.DrawGround(_spriteBatch);
-            _map.DrawTrees(_spriteBatch);
+            _map.Draw(_spriteBatch);
 
             foreach (Enemy enemy in _enemies.OrderBy(e => e.Position.Y))
             {

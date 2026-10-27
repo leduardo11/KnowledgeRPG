@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using KnowledgeRPG.Core;
@@ -6,36 +8,48 @@ using KnowledgeRPG.Core;
 namespace KnowledgeRPG.Maps
 {
     /// <summary>
-    /// The forest level: a 30x30 tile map (480x480 px) generated from the
-    /// original Godot TileMapLayer data, with tree tiles acting as obstacles.
+    /// The forest level, loaded from a Tiled map at
+    /// <c>Content/Maps/forest.tmj</c>. Tile layers tagged with the boolean
+    /// property <c>solid</c> block movement.
     /// </summary>
     public sealed class ForestMap
     {
-        private const int Tile = ForestTileData.TileSize;
-        private readonly Texture2D _groundTiles;
-        private readonly Texture2D _objectTiles;
+        private readonly TiledMap _map;
+        private readonly Dictionary<string, Texture2D> _textures;
         private readonly HashSet<(int X, int Y)> _solidTiles = new();
 
         public ForestMap(Texture2D groundTiles, Texture2D objectTiles)
         {
-            _groundTiles = groundTiles;
-            _objectTiles = objectTiles;
+            string path = Path.Combine(
+                AppContext.BaseDirectory, "Content", "Maps", "forest.tmj");
 
-            foreach (TileCell cell in ForestTileData.Trees)
+            _map = TiledMap.Load(path);
+            _textures = new Dictionary<string, Texture2D>(StringComparer.OrdinalIgnoreCase)
             {
-                if (cell.X >= 0 && cell.Y >= 0 &&
-                    cell.X < ForestTileData.MapTiles &&
-                    cell.Y < ForestTileData.MapTiles)
+                ["plains"] = groundTiles,
+                ["objects"] = objectTiles,
+            };
+
+            foreach (TiledLayer layer in _map.Layers)
+            {
+                if (!layer.Solid)
+                    continue;
+
+                for (int y = 0; y < layer.Height; y++)
                 {
-                    _solidTiles.Add((cell.X, cell.Y));
+                    for (int x = 0; x < layer.Width; x++)
+                    {
+                        if (layer[x, y] != 0)
+                            _solidTiles.Add((x, y));
+                    }
                 }
             }
         }
 
-        public string Name => "Forest";
-        public string QuizPackId => "forest_level1";
-        public int Width => ForestTileData.MapSize;
-        public int Height => ForestTileData.MapSize;
+        public string Name => _map.Name;
+        public string QuizPackId => _map.QuizPackId;
+        public int Width => _map.Width * _map.TileWidth;
+        public int Height => _map.Height * _map.TileHeight;
 
         public bool IsSolid(RectF bounds)
         {
@@ -43,10 +57,10 @@ namespace KnowledgeRPG.Maps
                 bounds.Right > Width || bounds.Bottom > Height)
                 return true;
 
-            int minX = (int)(bounds.X / Tile);
-            int minY = (int)(bounds.Y / Tile);
-            int maxX = (int)((bounds.Right - 0.01f) / Tile);
-            int maxY = (int)((bounds.Bottom - 0.01f) / Tile);
+            int minX = (int)(bounds.X / _map.TileWidth);
+            int minY = (int)(bounds.Y / _map.TileHeight);
+            int maxX = (int)((bounds.Right - 0.01f) / _map.TileWidth);
+            int maxY = (int)((bounds.Bottom - 0.01f) / _map.TileHeight);
 
             for (int y = minY; y <= maxY; y++)
             {
@@ -60,28 +74,66 @@ namespace KnowledgeRPG.Maps
             return false;
         }
 
-        public void DrawGround(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (TileCell cell in ForestTileData.Ground)
+            foreach (TiledLayer layer in _map.Layers)
             {
-                spriteBatch.Draw(
-                    _groundTiles,
-                    new Rectangle(cell.X * Tile, cell.Y * Tile, Tile, Tile),
-                    new Rectangle(cell.AtlasX * Tile, cell.AtlasY * Tile, Tile, Tile),
-                    Color.White);
+                if (!layer.Visible)
+                    continue;
+
+                DrawLayer(spriteBatch, layer);
             }
         }
 
-        public void DrawTrees(SpriteBatch spriteBatch)
+        private void DrawLayer(SpriteBatch spriteBatch, TiledLayer layer)
         {
-            foreach (TileCell cell in ForestTileData.Trees)
+            for (int y = 0; y < layer.Height; y++)
             {
-                spriteBatch.Draw(
-                    _objectTiles,
-                    new Rectangle(cell.X * Tile, cell.Y * Tile, Tile, Tile),
-                    new Rectangle(cell.AtlasX * Tile, cell.AtlasY * Tile, Tile, Tile),
-                    Color.White);
+                for (int x = 0; x < layer.Width; x++)
+                {
+                    uint gid = layer[x, y];
+                    if (!_map.TryResolve(gid, out TiledTileRef tile))
+                        continue;
+
+                    Texture2D texture = TextureFor(tile.Tileset);
+                    TiledTileset tileset = tile.Tileset;
+
+                    var source = new Rectangle(
+                        tileset.Margin + tile.AtlasX * (tileset.TileWidth + tileset.Spacing),
+                        tileset.Margin + tile.AtlasY * (tileset.TileHeight + tileset.Spacing),
+                        tileset.TileWidth,
+                        tileset.TileHeight);
+
+                    var destination = new Rectangle(
+                        x * _map.TileWidth,
+                        y * _map.TileHeight,
+                        _map.TileWidth,
+                        _map.TileHeight);
+
+                    spriteBatch.Draw(
+                        texture,
+                        destination,
+                        source,
+                        Color.White,
+                        0f,
+                        Vector2.Zero,
+                        tile.Effects,
+                        0f);
+                }
             }
+        }
+
+        private Texture2D TextureFor(TiledTileset tileset)
+        {
+            if (_textures.TryGetValue(tileset.Name, out Texture2D byName))
+                return byName;
+
+            if (_textures.TryGetValue(tileset.TextureName, out Texture2D byImage))
+                return byImage;
+
+            throw new InvalidOperationException(
+                $"Tileset '{tileset.Name}' (image '{tileset.Image}') has no texture in ForestMap. " +
+                "Add its PNG to Content/Content.mgcb and pass it to the ForestMap constructor.");
         }
     }
 }
