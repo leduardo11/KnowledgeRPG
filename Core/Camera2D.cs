@@ -6,21 +6,13 @@ namespace KnowledgeRPG.Core
     /// Follows a target and clamps the view inside the map bounds, mirroring the
     /// Camera2D limits the Godot scene used.
     /// </summary>
-    public sealed class Camera2D
-    {
-        public Camera2D(int viewWidth, int viewHeight, int mapWidth, int mapHeight)
-        {
-            ViewWidth = viewWidth;
-            ViewHeight = viewHeight;
-            MapWidth = mapWidth;
-            MapHeight = mapHeight;
-        }
-
-        public int ViewWidth { get; }
-        public int ViewHeight { get; }
-        public int MapWidth { get; }
-        public int MapHeight { get; }
-        public Vector2 Position { get; private set; }
+    public sealed class Camera2D(int viewWidth, int viewHeight, int mapWidth, int mapHeight)
+	{
+		public int ViewWidth { get; } = viewWidth;
+		public int ViewHeight { get; } = viewHeight;
+		public int MapWidth { get; } = mapWidth;
+		public int MapHeight { get; } = mapHeight;
+		public Vector2 Position { get; private set; }
 
         public void Follow(Vector2 target)
         {

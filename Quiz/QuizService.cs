@@ -8,18 +8,13 @@ namespace KnowledgeRPG.Quiz
     /// Loads packs and serves questions from a shuffled bag so a pack cycles
     /// without repeating until every question has been asked once.
     /// </summary>
-    public sealed class QuizService
-    {
+    public sealed class QuizService(int seed = 0)
+	{
         private readonly Dictionary<string, QuizPack> _packs = new();
         private readonly Dictionary<string, List<QuizQuestion>> _bags = new();
-        private readonly Random _random;
+        private readonly Random _random = seed == 0 ? new Random() : new Random(seed);
 
-        public QuizService(int seed = 0)
-        {
-            _random = seed == 0 ? new Random() : new Random(seed);
-        }
-
-        public QuizQuestion Next(string packId)
+		public QuizQuestion Next(string packId)
         {
             QuizPack pack = GetOrLoad(packId);
 

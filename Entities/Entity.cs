@@ -17,22 +17,15 @@ namespace KnowledgeRPG.Entities
     /// per-axis collision resolution. <see cref="Position"/> is the character's
     /// feet (the origin used by the Godot scenes).
     /// </summary>
-    public abstract class Entity
-    {
-        protected Entity(SpriteAnimator sprite, Vector2 bodySize, Vector2 bodyOffset)
-        {
-            Sprite = sprite;
-            BodySize = bodySize;
-            BodyOffset = bodyOffset;
-        }
-
-        public SpriteAnimator Sprite { get; }
-        public Vector2 Position { get; set; }
+    public abstract class Entity(SpriteAnimator sprite, Vector2 bodySize, Vector2 bodyOffset)
+	{
+		public SpriteAnimator Sprite { get; } = sprite;
+		public Vector2 Position { get; set; }
         public Vector2 Velocity { get; set; }
         public float Speed { get; set; } = 100f;
-        public Vector2 BodySize { get; }
-        public Vector2 BodyOffset { get; }
-        public Facing Facing { get; protected set; } = Facing.Front;
+		public Vector2 BodySize { get; } = bodySize;
+		public Vector2 BodyOffset { get; } = bodyOffset;
+		public Facing Facing { get; protected set; } = Facing.Front;
         public bool AnimationLocked { get; protected set; }
         public bool IsVisible { get; set; } = true;
         public float Opacity { get; set; } = 1f;

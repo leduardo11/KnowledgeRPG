@@ -8,46 +8,29 @@ namespace KnowledgeRPG.Core
     /// A single animation strip on a sprite sheet: a row of frames with equal
     /// size, played at a fixed rate. Non-looping clips hold their last frame.
     /// </summary>
-    public sealed class AnimationClip
-    {
-        public AnimationClip(string name, int row, int frameCount, float framesPerSecond, bool loop)
-        {
-            Name = name;
-            Row = row;
-            FrameCount = frameCount;
-            FramesPerSecond = framesPerSecond;
-            Loop = loop;
-        }
-
-        public string Name { get; }
-        public int Row { get; }
-        public int FrameCount { get; }
-        public float FramesPerSecond { get; }
-        public bool Loop { get; }
-    }
+    public sealed class AnimationClip(string name, int row, int frameCount, float framesPerSecond, bool loop)
+	{
+		public string Name { get; } = name;
+		public int Row { get; } = row;
+		public int FrameCount { get; } = frameCount;
+		public float FramesPerSecond { get; } = framesPerSecond;
+		public bool Loop { get; } = loop;
+	}
 
     /// <summary>Plays <see cref="AnimationClip"/>s from a grid based sprite sheet.</summary>
-    public sealed class SpriteAnimator
-    {
-        private readonly Texture2D _texture;
-        private readonly int _frameWidth;
-        private readonly int _frameHeight;
-        private readonly int _columns;
+    public sealed class SpriteAnimator(Texture2D texture, int frameWidth, int frameHeight)
+	{
+        private readonly Texture2D _texture = texture;
+        private readonly int _frameWidth = frameWidth;
+        private readonly int _frameHeight = frameHeight;
+        private readonly int _columns = texture.Width / frameWidth;
         private readonly Dictionary<string, AnimationClip> _clips = new();
 
         private AnimationClip _current;
         private float _elapsed;
         private int _frame;
 
-        public SpriteAnimator(Texture2D texture, int frameWidth, int frameHeight)
-        {
-            _texture = texture;
-            _frameWidth = frameWidth;
-            _frameHeight = frameHeight;
-            _columns = texture.Width / frameWidth;
-        }
-
-        public string CurrentAnimation => _current?.Name ?? string.Empty;
+		public string CurrentAnimation => _current?.Name ?? string.Empty;
         public bool Finished { get; private set; }
         public bool FlipHorizontally { get; set; }
 

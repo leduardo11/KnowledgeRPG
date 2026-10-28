@@ -7,20 +7,14 @@ namespace KnowledgeRPG.Battle
     /// Bridges the battle to a quiz pack. A missing or broken pack fails open so
     /// content problems can never soft-lock an encounter.
     /// </summary>
-    public sealed class QuizGate
-    {
-        private readonly QuizService _quiz;
-        private readonly QuizPanel _panel;
+    public sealed class QuizGate(QuizService quiz, QuizPanel panel)
+	{
+        private readonly QuizService _quiz = quiz ?? throw new ArgumentNullException(nameof(quiz));
+        private readonly QuizPanel _panel = panel ?? throw new ArgumentNullException(nameof(panel));
         private bool _busy;
         private QuizAnswerResult _pending;
 
-        public QuizGate(QuizService quiz, QuizPanel panel)
-        {
-            _quiz = quiz ?? throw new ArgumentNullException(nameof(quiz));
-            _panel = panel ?? throw new ArgumentNullException(nameof(panel));
-        }
-
-        public bool IsBusy => _busy;
+		public bool IsBusy => _busy;
         public bool IsPanelOpen => _panel.IsOpen;
 
         public void Ask(string packId, double now)
