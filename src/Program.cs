@@ -5,8 +5,8 @@ namespace KnowledgeRPG
         [STAThread]
         static void Main()
         {
-            using (var game = new KnowledgeRPGGame())
-                game.Run();
-        }
+			using var game = new KnowledgeRPGGame();
+			game.Run();
+		}
     }
 }
