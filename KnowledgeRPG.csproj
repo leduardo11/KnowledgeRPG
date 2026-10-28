@@ -28,9 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="KnowledgeRPG.Tests\**\*" />
-    <Content Remove="KnowledgeRPG.Tests\**\*" />
-    <None Remove="KnowledgeRPG.Tests\**\*" />
+    <Compile Remove="src\KnowledgeRPG.Tests\**\*" />
+    <Content Remove="src\KnowledgeRPG.Tests\**\*" />
+    <None Remove="src\KnowledgeRPG.Tests\**\*" />
   </ItemGroup>
 
   <ItemGroup>
@@ -40,7 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Data\**\*">
+    <Content Include="src\Data\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

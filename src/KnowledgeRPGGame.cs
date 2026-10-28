@@ -1,17 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using KnowledgeRPG.Battle;
-using KnowledgeRPG.Core;
-using KnowledgeRPG.Entities;
-using KnowledgeRPG.Maps;
-using KnowledgeRPG.Quiz;
-using KnowledgeRPG.Scenes;
-using KnowledgeRPG.UI;
-
 namespace KnowledgeRPG
 {
     public sealed class KnowledgeRPGGame : Game

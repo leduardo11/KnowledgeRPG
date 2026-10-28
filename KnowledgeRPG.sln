@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeRPG", "KnowledgeRPG.csproj", "{E094C033-E447-4F82-A675-0A5C625D46D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeRPG.Tests", "KnowledgeRPG.Tests\KnowledgeRPG.Tests.csproj", "{C43B7BE3-FCA4-40E9-845A-34BC53DA6229}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeRPG.Tests", "src\KnowledgeRPG.Tests\KnowledgeRPG.Tests.csproj", "{C43B7BE3-FCA4-40E9-845A-34BC53DA6229}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

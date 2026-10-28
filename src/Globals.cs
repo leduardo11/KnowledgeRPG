@@ -1,0 +1,13 @@
+global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using Microsoft.Xna.Framework;
+global using Microsoft.Xna.Framework.Graphics;
+global using Microsoft.Xna.Framework.Input;
+global using KnowledgeRPG.Battle;
+global using KnowledgeRPG.Core;
+global using KnowledgeRPG.Entities;
+global using KnowledgeRPG.Maps;
+global using KnowledgeRPG.Quiz;
+global using KnowledgeRPG.Scenes;
+global using KnowledgeRPG.UI;

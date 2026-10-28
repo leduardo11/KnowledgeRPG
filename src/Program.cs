@@ -1,5 +1,3 @@
-using System;
-
 namespace KnowledgeRPG
 {
     public static class Program
